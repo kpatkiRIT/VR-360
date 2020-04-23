@@ -31,7 +31,7 @@ public class JSONData : MonoBehaviour
     	gamedata = JsonUtility.FromJson<GameData>( contents );
     	// gamedata.firstname = "bla";
     	// gamedata.lastname = "bulla";
-    	Debug.Log(gamedata.firstname);
-    	Debug.Log(gamedata.lastname);
+    	Debug.Log(gamedata.frames[0].bboxes[0].top_left[0]);
+    	// Debug.Log(gamedata.lastname);
     }
 }

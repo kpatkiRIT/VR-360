@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class GameData
+public class FrameData
 {
-    public FrameData[] frames;
+    public BboxData[] bboxes;
 }
