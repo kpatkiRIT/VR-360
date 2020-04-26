@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class FaceMarkerInstantiator : MonoBehaviour
 {
@@ -14,7 +15,11 @@ public class FaceMarkerInstantiator : MonoBehaviour
 
     GameData gamedata = new GameData();
 
-    int k = 0;
+    GameObject videosphere;
+
+    VideoPlayer videoplayer;
+
+    long k = 0;
     int num_frames;
 
     // Start is called before the first frame update
@@ -28,6 +33,10 @@ public class FaceMarkerInstantiator : MonoBehaviour
 
     void Start()
     {
+        //Initialize videoplayer
+        videosphere = GameObject.Find("Video_display_sphere");
+        videoplayer = videosphere.GetComponent<VideoPlayer>();
+        
         // Read JSON
         path = Application.persistentDataPath + "/" + filename;
         Debug.Log( path );
@@ -38,6 +47,7 @@ public class FaceMarkerInstantiator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        k = videoplayer.frame;
         if( k < num_frames ){
         FrameData currentFrame = gamedata.frames[k];
 
@@ -66,6 +76,6 @@ public class FaceMarkerInstantiator : MonoBehaviour
         }
         }
         // k = k + 1;
-        k = (k + 1) % num_frames;
+        // k = (k + 1) % num_frames;
     }
 }
