@@ -16,8 +16,13 @@ public class FaceMarkerInstantiator : MonoBehaviour
     GameData gamedata = new GameData();
 
     GameObject videosphere;
-
     VideoPlayer videoplayer;
+
+    Camera cam;
+    Plane[] planes;
+    Collider objCollider;
+
+    AudioSource audioSource;
 
     long k = 0;
     int num_frames;
@@ -42,6 +47,12 @@ public class FaceMarkerInstantiator : MonoBehaviour
         Debug.Log( path );
         ReadData();
         num_frames = gamedata.numframes;
+
+        // Initialize camera
+        cam = Camera.main;
+
+        // Initialize audio source
+        // audioSource = GameObject.Find("Alert_beep_source") as AudioSource;
     }
 
     // Update is called once per frame
@@ -50,6 +61,10 @@ public class FaceMarkerInstantiator : MonoBehaviour
         k = videoplayer.frame;
         if( k < num_frames ){
         FrameData currentFrame = gamedata.frames[k];
+
+        // Calculate view frustum
+        planes = GeometryUtility.CalculateFrustumPlanes( cam );
+
 
         foreach( BboxData bbox in currentFrame.bboxes )
         {
@@ -69,6 +84,16 @@ public class FaceMarkerInstantiator : MonoBehaviour
                                                                      new Vector3( bbox.bottom_right[0], bbox.bottom_right[1], bbox.bottom_right[2] ),
                                                                      Quaternion.identity ) as GameObject;
             
+            // play a beep if left face marker is outside view frustum
+            objCollider = topLeftFaceMarkerPrefabClone.GetComponent<Collider>();
+            if ( !GeometryUtility.TestPlanesAABB( planes, objCollider.bounds ) )
+            {
+                Debug.Log( "Face behind you!" );
+                // audioSource.PlayOneShot();
+            } else {
+                Debug.Log( "Face in view!" );
+            }
+
             Destroy( topLeftFaceMarkerPrefabClone, Time.deltaTime );
             Destroy( topRightFaceMarkerPrefabClone, Time.deltaTime );
             Destroy( bottomLeftFaceMarkerPrefabClone, Time.deltaTime );

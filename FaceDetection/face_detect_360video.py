@@ -32,12 +32,12 @@ if __name__ == '__main__':
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
     # Load the video source
-    cap = cv2.VideoCapture('/home/kpatki/unity3d_projects/VR-360/Assets/Videos/london_on_tower_bridge.ogv')
+    # cap = cv2.VideoCapture('/home/kpatki/unity3d_projects/VR-360/Assets/Videos/london_on_tower_bridge.ogv')
     # cap = cv2.VideoCapture('/home/kpatki/unity3d_projects/VR-360/FaceDetection/test.ogv')
-    # cap = cv2.VideoCapture('/home/kpatki/unity3d_projects/VR-360/FaceDetection/test2.ogv')
+    cap = cv2.VideoCapture('/home/kpatki/unity3d_projects/VR-360/FaceDetection/test2.ogv')
 
     v = 0
-    n_frames = 800 # based on 29 secs x 30 fps = 870 frames in the video # test 150 frames, conservative 
+    n_frames = 50 # based on 29 secs x 30 fps = 870 frames in the video # test 150 frames, conservative 
     #pdb.set_trace()
 
     bboxes_dict = { 'frames' : [], 'numframes' : n_frames }
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     cap.release()
 
     # Print dictionary to json file
-    pp = pprint.PrettyPrinter( indent = 4 )
-    pp.pprint( bboxes_dict )
+    # pp = pprint.PrettyPrinter( indent = 4 )
+    # pp.pprint( bboxes_dict )
     with open('/home/kpatki/.config/unity3d/DefaultCompany/VR-360/data.json', 'w') as f:
         json.dump(bboxes_dict, f)

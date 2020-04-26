@@ -75,3 +75,6 @@ FaceDetection/good_frame2.png
 FaceDetection/images/
 FaceDetection/make_calibration_video.py
 FaceDetection/make_video_from_images.txt
+Assets/Sounds.meta
+Assets/Sounds/
+FaceDetection/beep4.wav
