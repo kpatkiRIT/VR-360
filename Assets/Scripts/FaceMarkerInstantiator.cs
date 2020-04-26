@@ -15,12 +15,7 @@ public class FaceMarkerInstantiator : MonoBehaviour
     GameData gamedata = new GameData();
 
     int k = 0;
-    int num_frames = 2;
-	
-    // Vector3[] positionlist = {new Vector3(0f,0f,0f),
-	   //                        new Vector3(0f,0f,1f),
-	   //                        new Vector3(0f,1f,1f),
-	   //                        new Vector3(0f,1f,0f) };
+    int num_frames;
 
     // Start is called before the first frame update
     
@@ -37,11 +32,13 @@ public class FaceMarkerInstantiator : MonoBehaviour
         path = Application.persistentDataPath + "/" + filename;
         Debug.Log( path );
         ReadData();
+        num_frames = gamedata.numframes;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if( k < num_frames ){
         FrameData currentFrame = gamedata.frames[k];
 
         foreach( BboxData bbox in currentFrame.bboxes )
@@ -67,8 +64,8 @@ public class FaceMarkerInstantiator : MonoBehaviour
             Destroy( bottomLeftFaceMarkerPrefabClone, Time.deltaTime );
             Destroy( bottomRightFaceMarkerPrefabClone, Time.deltaTime );
         }
-        
-
+        }
+        // k = k + 1;
         k = (k + 1) % num_frames;
     }
 }

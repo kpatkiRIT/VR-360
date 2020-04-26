@@ -62,3 +62,16 @@ crashlytics-build.properties
 # 360 Video files
 *.ogv
 *.mp4
+
+# Testing files
+Assets/Videos/calib.ogv.meta
+Assets/Videos/test.ogv.meta
+Assets/Videos/test2.ogv.meta
+FaceDetection/calib.png
+FaceDetection/copy_file.py
+FaceDetection/get_one_frame.py
+FaceDetection/good_frame.png
+FaceDetection/good_frame2.png
+FaceDetection/images/
+FaceDetection/make_calibration_video.py
+FaceDetection/make_video_from_images.txt

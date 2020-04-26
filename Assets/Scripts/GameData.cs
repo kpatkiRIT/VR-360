@@ -6,4 +6,5 @@ using UnityEngine;
 public class GameData
 {
     public FrameData[] frames;
+    public int numframes;
 }
