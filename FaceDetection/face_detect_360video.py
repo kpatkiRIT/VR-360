@@ -33,12 +33,11 @@ if __name__ == '__main__':
 
     # Load the video source
     # cap = cv2.VideoCapture('/home/kpatki/unity3d_projects/VR-360/Assets/Videos/london_on_tower_bridge.ogv')
-    # cap = cv2.VideoCapture('/home/kpatki/unity3d_projects/VR-360/FaceDetection/test.ogv')
     cap = cv2.VideoCapture('/home/kpatki/unity3d_projects/VR-360/FaceDetection/test2.ogv')
+    # cap = cv2.VideoCapture('/home/kpatki/unity3d_projects/VR-360/FaceDetection/test3.ogv')
 
     v = 0
-    n_frames = 50 # based on 29 secs x 30 fps = 870 frames in the video # test 150 frames, conservative 
-    #pdb.set_trace()
+    n_frames = 50
 
     bboxes_dict = { 'frames' : [], 'numframes' : n_frames }
 
@@ -52,7 +51,6 @@ if __name__ == '__main__':
         if v == 0: print( img.shape )
         
         # Add a new frame to the dictionary
-        # if v < n_frames:
         bboxes_dict['frames'].append( { 'bboxes' : [] } )
 
         # Convert to grayscale
@@ -87,7 +85,7 @@ if __name__ == '__main__':
     cap.release()
 
     # Print dictionary to json file
-    # pp = pprint.PrettyPrinter( indent = 4 )
-    # pp.pprint( bboxes_dict )
+    pp = pprint.PrettyPrinter( indent = 4 )
+    pp.pprint( bboxes_dict )
     with open('/home/kpatki/.config/unity3d/DefaultCompany/VR-360/data.json', 'w') as f:
         json.dump(bboxes_dict, f)

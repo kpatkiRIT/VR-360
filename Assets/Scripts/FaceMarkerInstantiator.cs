@@ -23,6 +23,7 @@ public class FaceMarkerInstantiator : MonoBehaviour
     Collider objCollider;
 
     AudioSource audioSource;
+    public AudioClip sound;
 
     long k = 0;
     int num_frames;
@@ -52,7 +53,7 @@ public class FaceMarkerInstantiator : MonoBehaviour
         cam = Camera.main;
 
         // Initialize audio source
-        // audioSource = GameObject.Find("Alert_beep_source") as AudioSource;
+        audioSource = GameObject.Find("Alert_beep_source").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -89,7 +90,7 @@ public class FaceMarkerInstantiator : MonoBehaviour
             if ( !GeometryUtility.TestPlanesAABB( planes, objCollider.bounds ) )
             {
                 Debug.Log( "Face behind you!" );
-                // audioSource.PlayOneShot();
+                audioSource.PlayOneShot( sound );
             } else {
                 Debug.Log( "Face in view!" );
             }

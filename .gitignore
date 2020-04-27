@@ -78,3 +78,8 @@ FaceDetection/make_video_from_images.txt
 Assets/Sounds.meta
 Assets/Sounds/
 FaceDetection/beep4.wav
+Assets/Videos/calib2.ogv.meta
+Assets/Videos/test3.ogv.meta
+FaceDetection/calib2.png
+FaceDetection/calib2_numbers.png
+FaceDetection/test3.png

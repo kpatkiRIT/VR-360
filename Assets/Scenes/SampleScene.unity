@@ -157,6 +157,7 @@ MonoBehaviour:
     type: 3}
   bottomRightFaceMarkerPrefab: {fileID: 8200332498003532157, guid: f9e33abbe01bcc825935e00c41f99338,
     type: 3}
+  sound: {fileID: 8300000, guid: 78e4ee350207870e6b4b851b528b6e61, type: 3}
 --- !u!4 &800029450
 Transform:
   m_ObjectHideFlags: 0
@@ -512,7 +513,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 78e4ee350207870e6b4b851b528b6e61, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.107
   m_Pitch: 1
   Loop: 0
   Mute: 0
